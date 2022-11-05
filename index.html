@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <article class="card">
+        <header>
+          <h3>Введите ваши данные:</h3>
+        </header>
+        <footer>
+          <div class="third container">
+            <input class="stack" placeholder="Имя" />
+            <input class="stack" placeholder="Фамилия" />
+            <input class="stack" placeholder="Адрес электронной почты" /><br />
+            <button onclick="sendData()">Сохранить данные</button>
+          </div>
+        </footer>
+      </article>
+      <a href="/result.html" hidden target="_blank" rel="noopener noreferrer"
+        >Смотреть</a
+      >
+    </div>
+    <script>
+      const sendData = () => {
+        const url = new URL("http://127.0.0.1:5500/result.html");
+        const search_params = url.searchParams;
+        const inputs = document.querySelectorAll(".stack");
+        inputs.forEach((i) => {
+          search_params.append(i.getAttribute("placeholder"), i.value);
+        });
+        url.search = search_params.toString();
+        const linkEl = document.querySelector("a");
+        console.log(url.toString())
+        linkEl.setAttribute("href", url.toString());
+        linkEl.hidden = false;
+      };
+    </script>
+  </body>
+</html>
