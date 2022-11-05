@@ -28,7 +28,7 @@
     </div>
     <script>
       const sendData = () => {
-        const url = new URL("http://127.0.0.1:5500/result.html");
+        const url = new URL("https://sashagra.site/demo-form2pdf/result.html");
         const search_params = url.searchParams;
         const inputs = document.querySelectorAll(".stack");
         inputs.forEach((i) => {
@@ -36,7 +36,7 @@
         });
         url.search = search_params.toString();
         const linkEl = document.querySelector("a");
-        console.log(url.toString())
+        console.log(url.toString());
         linkEl.setAttribute("href", url.toString());
         linkEl.hidden = false;
       };
